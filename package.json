@@ -9,11 +9,7 @@
     "analysis"
   ],
   "homepage": "https://github.com/dherman/xpi.js",
-  "author": {
-    "name": "Dave Herman",
-    "email": "dherman@mozilla.com",
-    "url": "https://github.com/dherman"
-  },
+  "author": "Dave Herman <dherman@mozilla.com> (https://github.com/dherman)",
   "bugs": {
     "email": "dherman@mozilla.com",
     "url": "https://github.com/dherman/xpi.js/issues"
@@ -22,7 +18,7 @@
   "main": "xpi.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dherman/xpi.js"
+    "url": "git://github.com/dherman/xpi.js.git"
   },
   "engine": {
     "node": ">=0.6.17"
@@ -32,5 +28,10 @@
     "cjson": "0.0.x",
     "sax": "0.4.x",
     "temp": "0.4.x"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
   }
 }
