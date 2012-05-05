@@ -1,0 +1,36 @@
+{
+  "name": "xpi",
+  "version": "0.0.1",
+  "description": "Library for unpacking Firefox addons and extract their script contents.",
+  "keywords": [
+    "firefox",
+    "addon",
+    "xpi",
+    "analysis"
+  ],
+  "homepage": "https://github.com/dherman/xpi.js",
+  "author": {
+    "name": "Dave Herman",
+    "email": "dherman@mozilla.com",
+    "url": "https://github.com/dherman"
+  },
+  "bugs": {
+    "email": "dherman@mozilla.com",
+    "url": "https://github.com/dherman/xpi.js/issues"
+  },
+  "license": "MIT",
+  "main": "xpi.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dherman/xpi.js"
+  },
+  "engine": {
+    "node": ">=0.6.17"
+  },
+  "dependencies": {
+    "adm-zip": "0.1.x",
+    "cjson": "0.0.x",
+    "sax": "0.4.x",
+    "temp": "0.4.x"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  // https://developer.mozilla.org/en/XUL/Events
+  "nonAttributeEvents": [
+      // Window activation events
+      "activate", "deactivate",
+
+      // Inherited DOM events
+      "DOMMouseScroll",
+
+      // Mutation DOM events
+      "DOMAttrModified", "DOMAttrInserted", "DOMNodeRemoved",
+
+      // Common XUL events
+      "DOMMenuItemActive", "DOMMenuItemInactive",
+
+      // Accessibility events
+      "CheckboxStateChange", "RadioStateChange"
+  ],
+
+  "attributeEvents": [
+      // Inherited DOM events
+      "blur", "change", "click", "dblclick", "focus",
+      "keydown", "keypress", "keyup", "load", "mousedown", "mousemove", "mouseout",
+      "mouseover", "mouseup", "select", "unload",
+
+      // Common XUL Events
+      "broadcast", "close", "command", "commandupdate", "contextmenu",
+      "drag", "dragdrop", "dragend", "dragenter", "dragexit",
+      "draggesture", "dragover", "input", "overflow", "popuphidden",
+      "popuphiding", "popupshowing", "popupshown", "syncfrompreference",
+      "synctopreference", "underflow"
+  ],
+
+  // FIXME: need more
+  "xulElementTags": [
+      "button", "command", "commandset", "notificationbox",
+      "menu", "menupopup", "menuitem", "menuseparator", "menulist",
+      "keyset", "key", "tooltip", "hbox", "grid", "splitmenu",
+      "toolbarbutton", "toolbarspacer", "treecols", "treecol", "splitter", "treechildren",
+      "vbox", "statusbar", "statusbarpanel", "label", "window",
+      "preferences", "prefpane", "scale", "tree", "textbox", "checkbox", "saveddropdown",
+      "description", "script"
+  ],
+
+  "inlineEventHandlers": {
+      "command":       ["oncommand"],
+      "toolbarbutton": ["oncommand"],
+      "key":           ["oncommand"],
+      "menuitem":      ["oncommand"],
+      "description":   ["onclick"],
+      "button":        ["oncommand"],
+      "menupopup":     ["onpopupshowing"],
+      "saveddropdown": ["onchange"],
+      "checkbox":      ["oncommand", "onsynctopreference", "onsyncfrompreference"],
+      "prefpane":      ["onpaneload"],
+      "scale":         ["onchange"],
+      "tree":          ["onselect"],
+      "textbox":       ["oninput", "onblur"],
+      "label":         ["onclick"]
+  }
+
+}
