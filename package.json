@@ -1,6 +1,6 @@
 {
   "name": "xpi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library for unpacking Firefox addons and extract their script contents.",
   "keywords": [
     "firefox",
@@ -15,7 +15,7 @@
     "url": "https://github.com/dherman/xpi.js/issues"
   },
   "license": "MIT",
-  "main": "xpi.js",
+  "main": "lib/xpi.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/dherman/xpi.js.git"
