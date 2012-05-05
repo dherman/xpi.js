@@ -47,12 +47,21 @@ An individual .js or .jsm file:
   * `path` : the path within the XPI to the skipped file
   * `error` : the parse error
 
-An inline script tag or tag attribute:
+An inline `<script>` tag:
 
-  * `type` : `"script"` or `"attribute"`
+  * `type` : `"script"`
   * `path` : the path within the XPI to the file containing the skipped script
   * `line` : the line number within the file where the script occurs
   * `error` : the parse error
+
+An inline attribute:
+
+  * `type` : `"attribute"`
+  * `path` : the path within the XPI to the file containing the skipped attribute
+  * `line` : the line number within the file where the script occurs
+  * `error` : the parse error
+  * `tag` : the tag type containing the attribute
+  * `eventType` : the event handler specified by the attribute
 
 ### `"script"`
 
@@ -66,12 +75,21 @@ An individual .js or .jsm file:
   * `path` : the path within the XPI to the skipped file
   * `contents` : the script source
 
-An inline script tag or tag attribute:
+An inline `<script>` tag:
 
-  * `type` : `"script"` or `"attribute"`
-  * `path` : the path within the XPI to the file containing the skipped script
+  * `type` : `"script"`
+  * `path` : the path within the XPI to the file containing the script
   * `line` : the line number within the file where the script occurs
   * `contents` : the script source
+
+An inline attribute:
+
+  * `type` : `"attribute"`
+  * `path` : the path within the XPI to the file containing the attribute
+  * `line` : the line number within the file where the attribute occurs
+  * `contents` : the attribute code
+  * `tag` : the tag type containing the attribute
+  * `eventType` : the event handler specified by the attribute
 
 ### `"error"`
 
