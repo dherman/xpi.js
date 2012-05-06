@@ -1,6 +1,6 @@
 {
   "name": "xpi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Library for unpacking Firefox addons and extract their script contents.",
   "keywords": [
     "firefox",
