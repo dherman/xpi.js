@@ -2,105 +2,88 @@
 
 Unpack Firefox addon [XPI](https://developer.mozilla.org/en/Extension_Packaging) files and extract their JavaScript source code.
 
-Requires [node](http://nodejs.org). If you use the `checkSyntax` option, requires an installation of the SpiderMonkey shell in your PATH.
-
 ## Usage
 
 ```javascript
 var XPI = require('xpi');
 
-var xpi = new XPI('./adblock_plus-2.0.3-sm+tb+fn+fx.xpi', options);
-xpi.on("script", function(script) {
-    // extracted a script from the XPI
-});
-xpi.on("error", function(err) {
-    // an error occurred
-});
-xpi.on("end", function() {
+(new XPI.SourceEmitter("./adblock_plus-2.6.7-sm+tb+fx+an.xpi"))
+  .on("script", function(script) {
+    // extracted a script file (.js or .jsm) from the XPI
+  })
+  .on("overlay", function(overlay) {
+    // extracted a XUL overlay file (.xul) from the XPI
+  })
+  .on("end", function() {
     // done extracting
-});
+  })
+  .on("error", function(err) {
+    // error occurred
+  });
+
+(new XPI.JSEmitter("./adblock_plus-2.6.7-sm+tb+fx+an.xpi"))
+  .on("javascript", function(js) {
+    // extracted a JS source file or snippet from the XPI
+    switch (js.type) {
+      case 'file':
+        // JS source file
+      case 'script':
+        // <script> tag from a XUL file
+      case 'attribute':
+        // inline attribute script from a XUL file
+    }
+  })
+  .on("end", function() {
+    // done extracting
+  })
+  .on("error", function(err) {
+    // error occurred
+  });
 ```
 
-## Arguments
+## Class: new XPI.SourceEmitter(path)
 
-The xpi.js module is a constructor that takes a path to an XPI file and additional options:
+### Events
 
-  * `checkSyntax` : Set to `true` to check each script to see if SpiderMonkey can parse it. **Default**: `false`
-  * `shell` : Executable name for the SpiderMonkey shell. **Default**: `"js"`
-  * `strict` : If `true`, causes an error event if any script fails to parse in SpiderMonkey. If `false`, emits a `skipped` event and continues processing. **Default**: `false`
+#### 'script'
 
-The result of the constructor is an [EventEmitter](http://nodejs.org/api/events.html).
+  * `fileName`: String
+  * `source`: String
 
-## Events
+#### 'overlay'
 
-The XPI event emitter produces the following types of events.
+  * `fileName`: String
+  * `source`: String
 
-### `"skipped"`
 
-Indicates that a script failed to parse by SpiderMonkey and was skipped. No `script` event will be emitted for this script.
+## Class: new XPI.JSEmitter(path)
 
-The sole argument is one of the following types of objects:
+### Events
 
-An individual .js or .jsm file:
+#### "javascript"
 
-  * `type` : `"file"`
-  * `path` : the path within the XPI to the skipped file
-  * `error` : the parse error
+##### js.type === 'file'
 
-An inline `<script>` tag:
+  * `fileName`: String
+  * `source`: String
 
-  * `type` : `"script"`
-  * `path` : the path within the XPI to the file containing the skipped script
-  * `line` : the line number within the file where the script occurs
-  * `error` : the parse error
+##### js.type === 'script'
 
-An inline attribute:
+  * `fileName`: String
+  * `source`: String
+  * `line`: Number
 
-  * `type` : `"attribute"`
-  * `path` : the path within the XPI to the file containing the skipped attribute
-  * `line` : the line number within the file where the script occurs
-  * `error` : the parse error
-  * `tag` : the tag type containing the attribute
-  * `eventType` : the event handler specified by the attribute
+##### js.type === 'attribute'
 
-### `"script"`
+  * `fileName`: String
+  * `source`: String
+  * `line`: Number
+  * `tag`: String
+  * `eventType`: String
 
-A script has been extracted.
-
-The sole argument is one of the following types of objects:
-
-An individual .js or .jsm file:
-
-  * `type` : `"file"`
-  * `path` : the path within the XPI to the skipped file
-  * `contents` : the script source
-
-An inline `<script>` tag:
-
-  * `type` : `"script"`
-  * `path` : the path within the XPI to the file containing the script
-  * `line` : the line number within the file where the script occurs
-  * `contents` : the script source
-
-An inline attribute:
-
-  * `type` : `"attribute"`
-  * `path` : the path within the XPI to the file containing the attribute
-  * `line` : the line number within the file where the attribute occurs
-  * `contents` : the attribute code
-  * `tag` : the tag type containing the attribute
-  * `eventType` : the event handler specified by the attribute
-
-### `"error"`
-
-An error occurred in extracting the source or running the SpiderMonkey shell. The single argument is the error information.
-
-### `"end"`
-
-Script extraction has successfully completed.
 
 ## License
 
-Copyright © 2012 Dave Herman
+Copyright © 2015 Dave Herman
 
 Licensed under the [MIT License](http://mit-license.org).

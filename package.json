@@ -1,6 +1,6 @@
 {
   "name": "xpi",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Library for unpacking Firefox addons and extract their script contents.",
   "keywords": [
     "firefox",
@@ -21,17 +21,16 @@
     "url": "git://github.com/dherman/xpi.js.git"
   },
   "engine": {
-    "node": ">=0.6.17"
+    "node": ">=0.10.24"
   },
   "directories": {
     "lib": "./lib"
   },
   "dependencies": {
-    "adm-zip": "0.1.x",
     "cjson": "0.0.x",
     "sax": "0.4.x",
-    "spidermonkey": "0.1.x",
-    "temp": "0.4.x"
+    "runzip": "0.0.3",
+    "concat-stream": "1.4.7"
   },
   "devDependencies": {},
   "optionalDependencies": {},
