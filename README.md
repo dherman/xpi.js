@@ -43,14 +43,12 @@ var XPI = require('xpi');
 
 ## Class: new XPI.SourceEmitter(path)
 
-### Events
-
-#### 'script'
+### Event: 'script'
 
   * `fileName`: String
   * `source`: String
 
-#### 'overlay'
+### Event: 'overlay'
 
   * `fileName`: String
   * `source`: String
@@ -58,22 +56,20 @@ var XPI = require('xpi');
 
 ## Class: new XPI.JSEmitter(path)
 
-### Events
+### Event: 'javascript'
 
-#### "javascript"
-
-##### js.type === 'file'
+#### js.type === 'file'
 
   * `fileName`: String
   * `source`: String
 
-##### js.type === 'script'
+#### js.type === 'script'
 
   * `fileName`: String
   * `source`: String
   * `line`: Number
 
-##### js.type === 'attribute'
+#### js.type === 'attribute'
 
   * `fileName`: String
   * `source`: String
