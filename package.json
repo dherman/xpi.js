@@ -1,6 +1,6 @@
 {
   "name": "xpi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Library for unpacking Firefox addons and extract their script contents.",
   "keywords": [
     "firefox",
@@ -29,7 +29,7 @@
   "dependencies": {
     "cjson": "0.0.x",
     "sax": "0.4.x",
-    "runzip": "0.0.3",
+    "runzip": "0.0.4",
     "concat-stream": "1.4.7"
   },
   "devDependencies": {},
